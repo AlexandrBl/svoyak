@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, City } = require('../../db/models');
+const { User } = require('../../db/models');
 const { generateTokens } = require('../../utils/authUtils');
 const cookieConfig = require('../../config/cookiesConfig');
 
@@ -15,10 +15,8 @@ router.post('/reg', async (req, res) => {
     if (!user) {
       const hash = await bcrypt.hash(password, 10);
 
-      const city_id = (await City.findOne({ where: { name: city } })).id;
-
       user = await User.create({
-        name, email, password: hash, city_id,
+        name, email, password: hash,
       });
 
       const { accessToken, refreshToken } = generateTokens(
