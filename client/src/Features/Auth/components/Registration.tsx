@@ -26,10 +26,10 @@ if(password === password2){
   return (
     <div className='contAuth'>
     <form className='registration' onSubmit={registration}>
-        <input type='text' value={name} placeholder='name' required onChange={(e)=>setName(e.target.value)}/>
-        <input type='email' value={email} placeholder='email' required onChange={(e)=>setEmail(e.target.value)}/>
-        <input type='password' value={password} placeholder='password' required onChange={(e)=>setPassword(e.target.value)}/>
-        <input type='password' value={password2} placeholder='erPassword' required onChange={(e)=>setPassword2(e.target.value)}/>
+        <input type='text' value={name} placeholder='name'  onChange={(e)=>setName(e.target.value)}/>
+        <input type='text' value={email} placeholder='email'  onChange={(e)=>setEmail(e.target.value)}/>
+        <input type='password' value={password} placeholder='password'  onChange={(e)=>setPassword(e.target.value)}/>
+        <input type='password' value={password2} placeholder='erPassword'  onChange={(e)=>setPassword2(e.target.value)}/>
         <button type='submit'>registration</button>
     </form>
     <div className='errRega err' >{message}</div>
