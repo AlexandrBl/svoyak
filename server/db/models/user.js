@@ -13,9 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    nickname: {
+    email: {
       allowNull: false,
       unique: true,
+      type: DataTypes.TEXT,
+    },
+    password: {
+      allowNull: false,
       type: DataTypes.TEXT,
     },
     createdAt: {
