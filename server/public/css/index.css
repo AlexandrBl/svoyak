@@ -1,0 +1,134 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+  url(../fonts/IBMwoff/IBMPlexMono-SemiBold.woff) format('woff'),
+  url(../fonts/IMBttf/IBMPlexMono-SemiBold.ttf) format('ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+  url(../fonts/IBMwoff/IBMPlexMono-Medium.woff) format('woff'),
+  url(../fonts/IMBttf/IBMPlexMono-Medium.ttf) format('ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+      url(../fonts/IBMwoff/IBMPlexMono-Regular.woff) format('woff'),
+      url(../fonts/IMBttf/IBMPlexMono-Regular.ttf) format('ttf');
+  font-weight: 400;
+}
+
+@font-face{
+  font-family: "Gilroy";
+  src:
+      url(../fonts/IBMwoff/IBMPlexMono-ExtraLight.woff) format('woff'),
+      url(../fonts/IMBttf/IBMPlexMono-ExtraLight.ttf) format('ttf');
+   font-weight: 200;
+}
+
+:root {
+  --dark-green-color: rgb(22, 33, 41);
+  --grey-color: rgb(193, 193, 193);
+  --black-color: rgb(10, 16, 20);
+  --black-color-transparent: rgb(10, 16, 20, 0.8);
+  --green: rgb(163, 251, 181);
+  --green-transparent: rgb(163, 251, 181, 0.1);
+  --red: rgb(196, 65, 109);
+}
+
+html {
+  font-family: "Gilroy", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.7vw;
+  line-height: 0.7vw;
+  background: white;
+  position: relative;
+   
+}
+
+body{
+  min-height: 100vh ;
+  position: relative;
+}
+
+main {
+  min-height: calc(100vh - 19rem) ;
+}
+
+.center-container {
+  margin: 0 auto;
+  width: 120rem;
+}
+
+img {
+  max-width: 27rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  background-color: rgb(211, 211, 211, 0.3);
+  outline: none;
+  border: none;
+  height: 5rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 0 0 3rem;
+}
+
+select {
+  background-color: rgb(211, 211, 211, 0.3);
+  outline: none;
+  border: none;
+  height: 5rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(211, 211, 211, 0.3);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  height: 4rem;
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+button:hover{
+  scale: 1.03;
+}
+
+li{
+  transition: 0.15s;
+}
+
+li:hover{
+  scale: 1.03;
+}

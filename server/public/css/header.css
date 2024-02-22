@@ -1,0 +1,49 @@
+.center-container {
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  height: 7rem;
+  justify-content: space-around;
+  background-color: lightgrey;
+  margin-bottom: 5rem;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 7rem;
+  justify-content: center;
+  
+}
+
+.nav__list {
+  display: flex;
+  justify-content: space-around;
+  height: 7rem;
+  align-items: center;
+}
+
+.nav__el {
+  margin: 0 0 0 4rem;
+  font-size: 2rem;
+}
+
+.logOut-button {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 2rem;
+}

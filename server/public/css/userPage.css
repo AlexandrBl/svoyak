@@ -1,0 +1,53 @@
+.userCard {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.user-nav {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.greets {
+  font-size: 2rem;
+}
+
+.user-nav__button  {
+  height: 5rem;
+  width: 20rem;
+  margin-right: 1rem;
+}
+
+.add-product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.add-product__input{
+  width: 55rem;
+  margin: 0 0 3rem 0;
+}
+
+
+
+.add-product__select {
+  padding-left: 3rem;
+  width: 55rem;
+  cursor: pointer;
+}
+
+.add-product__button {
+  width: 100%;
+  justify-self: center;
+}
+
+.order-message{
+  margin: 0 0 1rem 1rem;
+  font-size: 1.3rem;
+}
+

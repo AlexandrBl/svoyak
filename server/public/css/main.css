@@ -1,0 +1,120 @@
+.filter-container{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+
+.search-form{
+width: 50rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items:center;
+
+}
+
+.filter-form{
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  
+}
+
+.search-form__input{
+  width: 100%;
+}
+
+.filter-form__input{
+  width: 100%;
+}
+
+.search-form__input::placeholder{
+
+}
+
+.filter-form__input::placeholder{
+
+height: 5rem;
+border-radius: 1rem;
+}
+
+.btn {
+  background-color: rgb(211, 211, 211, 0.3);
+  height: 3rem;
+  border-radius: 1rem;
+  width: 30%;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product-list__item {
+  margin: 3rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: 0.15s;
+  background-color: rgb(211, 211, 211, 0.15);
+}
+
+p {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.product-list__item:hover{
+  scale: none;
+  
+}
+
+
+.item-card__user-city{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  align-self: end;
+  margin: 1rem;
+}
+
+.item-card{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.item-card__img {
+  margin-bottom: 1rem;
+}
+
+.item-card__name{
+  margin-left: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  width: 90%;
+  text-align: center;
+}
+
+.item-card__price{
+  margin-left: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+
+}
+
+.item-card__condition{
+  margin-left: 1rem;
+  font-size: 1.5rem;
+margin-bottom: 1rem;
+}
+
+.item-card__add-button{ 
+  align-self: center;
+  margin-bottom: 1rem;
+  width: 95%;
+}
+
+
