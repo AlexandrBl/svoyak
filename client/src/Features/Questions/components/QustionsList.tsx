@@ -7,11 +7,11 @@ import * as api  from '../api'
 function QustionsList():JSX.Element {
 const dispatch = useDispatch()
   const themes = useSelector((store:RootState)=> store.qustionsState.themes)
+  
 
   useEffect(()=> {
 api.initFetchQuestions().then(data=>{
 
-// console.log(data)
 
   dispatch({type:'themes/init',payload:data})
 })
