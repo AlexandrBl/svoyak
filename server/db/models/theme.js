@@ -15,10 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       type: DataTypes.TEXT,
     },
-    img_path: {
-      allowNull: false,
-      type: DataTypes.TEXT,
-    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
