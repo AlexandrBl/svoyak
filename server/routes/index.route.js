@@ -12,8 +12,6 @@ const questionsApiRouter = require('./api/quest.api.route');
 
 // const authApiRouter = require('./api/auth.api.route');
 const questionsApiRouter = require('./api/quest.api.route');
-// const userApiRouter = require('./api/user.api.route');
-// const orderApiRouter = require('./api/order.api.route');
 
 
 // router.use('/api/auth', authApiRouter);
