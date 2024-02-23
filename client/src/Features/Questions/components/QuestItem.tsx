@@ -85,7 +85,7 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
       <input  id={el.id} type="radio" name='answer' value={el.id}/>
       <label htmlFor={el.id}>{el.answer_text}</label> </>)
       }
-      <button type='submit'>yrtrfh</button>
+      <button className={message !== '' ? 'disabled' : ''} type='submit'>Проверить ответ</button>
       <div className='answerErr'>{message}</div>
     </form>
   </div>

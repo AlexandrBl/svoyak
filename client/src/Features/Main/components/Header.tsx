@@ -6,7 +6,6 @@ import type { RootState } from '../../../store/store'
 import * as api from '../api'
 
 
-
 function Header():JSX.Element {
     const user = useSelector((store:RootState)=>store.authState.user)
   
@@ -32,7 +31,7 @@ function Header():JSX.Element {
         {/* {user && <NavLink to='/themes'> Игра</NavLink>} */}
        {/* {!user && <NavLink to='/registration'> Регистрация</NavLink>} */}
        {/* <NavLink to='/registration'> Регистрация</NavLink> */}
-       {user && <p>{`Привет ${user.name}`}</p>}
+       {user && <p>{`Привет ${user.name}`}!</p>}
        {user && <p>{`твой счет: ${user.score}`}</p>}
        {user && <button onClick={logOut} type='button' className="logOut">Выйти</button>}
     </nav>
