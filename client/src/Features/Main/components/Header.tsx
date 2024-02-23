@@ -17,6 +17,7 @@ function Header():JSX.Element {
     const logOut = ():void => {api.logOut()
     .then(data=>{
       dispatch({type:'auth/registration', payload: data})
+      localStorage.clear()
       navigate('/')
     })
     .catch(console.log)
