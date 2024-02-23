@@ -17,6 +17,7 @@ router.post('/reg', async (req, res) => {
       user = await User.create({
         name, email, password: hash,
       });
+      const userForSend = { id: user.id, name, email };
       const { accessToken, refreshToken } = generateTokens(
         { user: { name: user.name, id: user.id } },
       );
@@ -30,7 +31,7 @@ router.post('/reg', async (req, res) => {
         refreshToken,
         { maxAge: cookieConfig.maxAgeRefresh, httpOnly: cookieConfig.httpOnly },
       );
-      res.status(201).json({ message: 'ok' });
+      res.status(201).json({ message: 'ok', user: userForSend });
     } else {
       res.status(200).json({ message: 'Такой пользователь уже существует' });
     }
@@ -44,11 +45,11 @@ router.post('/log', async (req, res) => {
 
   if (email && password) {
     const user = await User.findOne({ where: { email } });
-
     if (user) {
       const isSame = await bcrypt.compare(password, user.password);
 
       if (isSame) {
+        const userForSend = { id: user.id, name: user.name, email };
         const { accessToken, refreshToken } = generateTokens(
           { user: { name: user.name, id: user.id } },
         );
@@ -65,7 +66,7 @@ router.post('/log', async (req, res) => {
           { maxAge: cookieConfig.maxAgeRefresh, httpOnly: cookieConfig.httpOnly },
         );
 
-        res.status(201).json({ message: 'ok' });
+        res.status(201).json({ message: 'ok', user: userForSend });
       }
     } else {
       res.json({ message: 'Не существет такого пользователя или введен неверный пароль' });
@@ -79,12 +80,16 @@ router.get('/out', async (req, res) => {
   res
     .clearCookie(cookieConfig.access)
     .clearCookie(cookieConfig.refresh);
-  res.status(200).json({ message: 'ok' });
+  res.status(200).json({ message: 'ok', user: null });
 });
 
 router.get('/user', async (req, res) => {
   try {
-    res.status(200).json({ message: 'ok', user: res.locals.user });
+    if (res.locals.user) {
+      res.status(200).json({ message: 'ok', user: res.locals.user });
+    } else {
+      res.status(200).json({ message: 'ok', user: null });
+    }
   } catch ({ message }) {
     res.status(500).json({ message });
   }
