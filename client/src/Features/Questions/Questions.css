@@ -1,0 +1,19 @@
+.modals {
+  background-color: red;
+  z-index: 100;
+  position: absolute;
+  top: 25vh;
+  left: 25vw;
+  width: 50vw;
+  height: 50vh;
+}
+
+.background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(69, 65, 65, 0.5)
+
+}
