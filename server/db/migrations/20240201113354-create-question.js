@@ -12,6 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      salary: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       theme_id: {
         allowNull: false,
         type: Sequelize.INTEGER,

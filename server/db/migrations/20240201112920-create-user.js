@@ -13,6 +13,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      score: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
       password: {
         allowNull: false,
         type: Sequelize.TEXT,

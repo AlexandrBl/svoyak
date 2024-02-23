@@ -6,20 +6,22 @@ const cookieConfig = require('../../config/cookiesConfig');
 
 router.post('/reg', async (req, res) => {
   const {
-    name, email, password,
+    name, email, password, score,
   } = req.body;
 
   if (name && email && password) {
     let user = await User.findOne({ where: { email } });
-
     if (!user) {
       const hash = await bcrypt.hash(password, 10);
       user = await User.create({
-        name, email, password: hash,
+        name, email, password: hash, score,
       });
-      const userForSend = { id: user.id, name, email };
+      console.log(user);
+      const userForSend = {
+        id: user.id, name, email, score,
+      };
       const { accessToken, refreshToken } = generateTokens(
-        { user: { name: user.name, id: user.id } },
+        { user: { name: user.name, id: user.id, score } },
       );
       res.cookie(
         cookieConfig.access,
@@ -49,7 +51,9 @@ router.post('/log', async (req, res) => {
       const isSame = await bcrypt.compare(password, user.password);
 
       if (isSame) {
-        const userForSend = { id: user.id, name: user.name, email };
+        const userForSend = {
+          id: user.id, name: user.name, email, score: user.score,
+        };
         const { accessToken, refreshToken } = generateTokens(
           { user: { name: user.name, id: user.id } },
         );

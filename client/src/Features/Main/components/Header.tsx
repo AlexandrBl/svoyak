@@ -32,6 +32,7 @@ function Header():JSX.Element {
        {/* {!user && <NavLink to='/registration'> Регистрация</NavLink>} */}
        {/* <NavLink to='/registration'> Регистрация</NavLink> */}
        {user && <p>{`Привет ${user.name}`}</p>}
+       {user && <p>{`твой счет: ${user.score}`}</p>}
        {user && <button onClick={logOut} type='button' className="logOut">Выйти</button>}
     </nav>
   )

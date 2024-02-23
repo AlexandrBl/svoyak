@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
     },
+    salary: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
     img_path: {
       type: DataTypes.TEXT,
     },
