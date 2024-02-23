@@ -77,8 +77,12 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
   modals && 
   <div className="background">
     <div className='modals'>
-    <button className='modalsButton' type='button' onClick={useLocals} >x</button>
-    <h2 className='queTit'>{question.question_text}</h2>
+
+    <button type='button' onClick={useLocals} >x</button>
+    <h2>{question.question_text}</h2>
+    {question.img_path && <img src={question.img_path} />}
+    
+
     <form onSubmit={choiceAnswer}>
       {question.Answers.map((el)=>
       <>
