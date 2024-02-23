@@ -22,12 +22,12 @@ api.initFetchQuestions().then(data=>{
   },[])
     
   return (
-    <div>
+    <div className='questionList'>
 {
-  themes.map((theme)=><><p>{theme.name}</p>
+  themes.map((theme)=><div className='themes'><p className='theme'>{theme.name}</p>
   <div>{theme.Questions.map((question)=><QuestItem  question={question} key={theme.id}/>)}</div> 
 
-</>)
+</div>)
 }
     </div>
   )
