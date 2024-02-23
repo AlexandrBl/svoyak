@@ -52,27 +52,31 @@ function Registration():JSX.Element {
             }
 
   return (
-    <div className='contAuth'>
+    <dev className="container">
+        <div className="contBut">
+        <div className='contAuth'>
         <button onClick={()=>setLogReg(true)} className={logReg ? 'disabled' : ''} type='button'>reg</button>
         <button onClick={()=>setLogReg(false)} className={logReg ? '' : 'disabled'} type='button' >log</button>
+        </div>
 
     {logReg && <form className='registration' onSubmit={registration}>
-        <input type='text' value={name} placeholder='name'  onChange={(e)=>setName(e.target.value)}/>
-        <input type='text' value={email} placeholder='email'  onChange={(e)=>setEmail(e.target.value)}/>
-        <input type='password' value={password} placeholder='password'  onChange={(e)=>setPassword(e.target.value)}/>
-        <input type='password' value={password2} placeholder='erPassword'  onChange={(e)=>setPassword2(e.target.value)}/>
+        <input className='regInp' type='text' value={name} placeholder='name'  onChange={(e)=>setName(e.target.value)}/>
+        <input className='regInp' type='text' value={email} placeholder='email'  onChange={(e)=>setEmail(e.target.value)}/>
+        <input className='regInp' type='password' value={password} placeholder='password'  onChange={(e)=>setPassword(e.target.value)}/>
+        <input className='regInp' type='password' value={password2} placeholder='erPassword'  onChange={(e)=>setPassword2(e.target.value)}/>
         <button type='submit'>registration</button>
     </form>}
 
     {!logReg && <form className='registration log' onSubmit={log}>
         
-        <input type='text' value={email} placeholder='email'  onChange={(e)=>setEmail(e.target.value)}/>
-        <input type='password' value={password} placeholder='password'  onChange={(e)=>setPassword(e.target.value)}/>
+        <input className='regInp' type='text' value={email} placeholder='email'  onChange={(e)=>setEmail(e.target.value)}/>
+        <input className='regInp' type='password' value={password} placeholder='password'  onChange={(e)=>setPassword(e.target.value)}/>
         
         <button type='submit'>login</button>
     </form>}
     <div className='errRega err' >{message}</div>
 </div>
+    </dev>
   )
 }
 

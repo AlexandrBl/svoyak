@@ -67,7 +67,7 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
 
   return (
     <>
-    <button type='button' className={disabled === 'true' ? 'disabled' : ''} onClick={
+    <button  type='button' className={disabled === 'true' ? 'disabled' : ''} onClick={
       ()=> setModals(true)
     } >{
         question.salary
@@ -77,17 +77,19 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
   modals && 
   <div className="background">
     <div className='modals'>
+
     <button type='button' onClick={useLocals} >x</button>
     <h2>{question.question_text}</h2>
     {question.img_path && <img src={question.img_path} />}
     
+
     <form onSubmit={choiceAnswer}>
       {question.Answers.map((el)=>
       <>
-      <input  id={el.id} type="radio" name='answer' value={el.id}/>
-      <label htmlFor={el.id}>{el.answer_text}</label> </>)
+      <input className='radio' checked  id={el.id} type="radio" name='answer' value={el.id}/>
+      <label className='queRadio' htmlFor={el.id}>{el.answer_text}</label> </>)
       }
-      <button className={message !== '' ? 'disabled' : ''} type='submit'>Проверить ответ</button>
+      <button className={message !== '' ? 'disabled' : ''} type='submit'>Проверить</button>
       <div className='answerErr'>{message}</div>
     </form>
   </div>
