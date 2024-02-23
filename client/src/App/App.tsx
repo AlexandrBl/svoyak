@@ -1,22 +1,35 @@
-import React, { useMemo, useReducer } from 'react';
-import { Route, Routes } from 'react-router';
-import Main from '../Features/Main/Main';
-import ReatarauntsList from '../Features/Restaurants/ReatarauntsList';
+import React, { useEffect }  from 'react';
+import { Route, Routes, useNavigate } from 'react-router';
 
 import './App.css';
-import reducer, { init } from '../Reducer/reducer';
-import { appContext } from '../Context/context';
-import RestarauntPage from '../Features/Restaurants/RestarauntPage';
+import { useDispatch, useSelector } from 'react-redux';
+import QustionsList from '../Features/Questions/components/QustionsList';
+import Main from '../Features/Main/components/Main';
+import Registration from '../Features/Auth/components/LogReg';
+import * as api from './api'
+import type { RootState } from '../store/store';
 
 function App(): JSX.Element {
   
-  const [state, dispatch] = useReducer(reducer, init)
-  
-  const memo = useMemo(()=>({state, dispatch}), [state, dispatch]) 
+  const dispatch = useDispatch()
 
+  const navigate = useNavigate()
+  
+useEffect(()=>{
+   api.getUser()
+   .then(data=>{
+    if(data.message === 'ok'){
+      dispatch({type:'auth/registration',payload:data})
+      
+      if (!data.user) {
+        navigate('/')
+      }
+    } 
+   })
+   .catch(console.log)   
+  },[])
 
   return (
-    <appContext.Provider value = {memo}>
     
     
     <div className="App">
@@ -25,15 +38,12 @@ function App(): JSX.Element {
 
       <Routes>
         <Route path='/' element={<Main/>} >
-          <Route index  element={<ReatarauntsList/>} />
-          <Route path='restaurant/:name' element={<RestarauntPage />} />
+          <Route index  element={<Registration/>} />
+          <Route path='/themes' element={<QustionsList />} />
         </Route>
       </Routes>
-
-
     </div>
   
-    </appContext.Provider>
   );
 
 }

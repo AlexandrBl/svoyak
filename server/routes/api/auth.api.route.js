@@ -1,43 +1,39 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, City } = require('../../db/models');
+const { User } = require('../../db/models');
 const { generateTokens } = require('../../utils/authUtils');
 const cookieConfig = require('../../config/cookiesConfig');
 
 router.post('/reg', async (req, res) => {
   const {
-    name, email, password, city,
+    name, email, password, score,
   } = req.body;
 
-  if (name && email && password && city) {
+  if (name && email && password) {
     let user = await User.findOne({ where: { email } });
-
     if (!user) {
       const hash = await bcrypt.hash(password, 10);
-
-      const city_id = (await City.findOne({ where: { name: city } })).id;
-
       user = await User.create({
-        name, email, password: hash, city_id,
+        name, email, password: hash, score,
       });
-
+      console.log(user);
+      const userForSend = {
+        id: user.id, name, email, score,
+      };
       const { accessToken, refreshToken } = generateTokens(
-        { user: { name: user.name, id: user.id } },
+        { user: { name: user.name, id: user.id, score } },
       );
-
       res.cookie(
         cookieConfig.access,
         accessToken,
         { maxAge: cookieConfig.maxAgeAccess, httpOnly: cookieConfig.httpOnly },
       );
-
       res.cookie(
         cookieConfig.refresh,
         refreshToken,
         { maxAge: cookieConfig.maxAgeRefresh, httpOnly: cookieConfig.httpOnly },
       );
-
-      res.status(201).json({ message: 'ok' });
+      res.status(201).json({ message: 'ok', user: userForSend });
     } else {
       res.status(200).json({ message: 'Такой пользователь уже существует' });
     }
@@ -51,11 +47,13 @@ router.post('/log', async (req, res) => {
 
   if (email && password) {
     const user = await User.findOne({ where: { email } });
-
     if (user) {
       const isSame = await bcrypt.compare(password, user.password);
 
       if (isSame) {
+        const userForSend = {
+          id: user.id, name: user.name, email, score: user.score,
+        };
         const { accessToken, refreshToken } = generateTokens(
           { user: { name: user.name, id: user.id } },
         );
@@ -72,7 +70,7 @@ router.post('/log', async (req, res) => {
           { maxAge: cookieConfig.maxAgeRefresh, httpOnly: cookieConfig.httpOnly },
         );
 
-        res.status(201).json({ message: 'ok' });
+        res.status(201).json({ message: 'ok', user: userForSend });
       }
     } else {
       res.json({ message: 'Не существет такого пользователя или введен неверный пароль' });
@@ -86,7 +84,19 @@ router.get('/out', async (req, res) => {
   res
     .clearCookie(cookieConfig.access)
     .clearCookie(cookieConfig.refresh);
-  res.status(200).json({ message: 'ok' });
+  res.status(200).json({ message: 'ok', user: null });
+});
+
+router.get('/user', async (req, res) => {
+  try {
+    if (res.locals.user) {
+      res.status(200).json({ message: 'ok', user: res.locals.user });
+    } else {
+      res.status(200).json({ message: 'ok', user: null });
+    }
+  } catch ({ message }) {
+    res.status(500).json({ message });
+  }
 });
 
 module.exports = router;

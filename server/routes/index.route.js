@@ -1,14 +1,19 @@
 const router = require('express').Router();
 
 const authApiRouter = require('./api/auth.api.route');
-const productApiRouter = require('./api/product.api.route');
-const userApiRouter = require('./api/user.api.route');
-const orderApiRouter = require('./api/order.api.route');
 
 router.use('/api/auth', authApiRouter);
-router.use('/api/products', productApiRouter);
-router.use('/api/user', userApiRouter);
-router.use('/api/order', orderApiRouter);
+// const authApiRouter = require('./api/auth.api.route');
+const questionsApiRouter = require('./api/quest.api.route');
+// const userApiRouter = require('./api/user.api.route');
+// const orderApiRouter = require('./api/order.api.route');
+
+// const authApiRouter = require('./api/auth.api.route');
+
+// router.use('/api/auth', authApiRouter);
+router.use('/api/questions', questionsApiRouter);
+// router.use('/api/user', userApiRouter);
+// router.use('/api/order', orderApiRouter);
 
 // const { ifNotAuthRedirect } = require('../middleware/auth');
 

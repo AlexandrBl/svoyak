@@ -13,9 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT,
     },
-    nickname: {
+    email: {
       allowNull: false,
       unique: true,
+      type: DataTypes.TEXT,
+    },
+    score: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
+    password: {
+      allowNull: false,
       type: DataTypes.TEXT,
     },
     createdAt: {

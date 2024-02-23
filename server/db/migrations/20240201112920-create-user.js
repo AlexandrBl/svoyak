@@ -1,4 +1,5 @@
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
@@ -12,7 +13,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
-      nickname: {
+      score: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      password: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
+      email: {
         allowNull: false,
         unique: true,
         type: Sequelize.TEXT,

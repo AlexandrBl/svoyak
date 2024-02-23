@@ -3,14 +3,17 @@ module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Themes', [
       {
-        name: 'Собеседование в Эльбрус',
-        img_path: '/images/placeholder.jpeg',
+        name: 'Коктейли',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'География',
-        img_path: '/images/placeholder.jpeg',
+        name: 'Мемы',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'Эльбрус',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
