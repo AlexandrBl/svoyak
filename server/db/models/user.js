@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       type: DataTypes.TEXT,
     },
+    score: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+    },
     password: {
       allowNull: false,
       type: DataTypes.TEXT,

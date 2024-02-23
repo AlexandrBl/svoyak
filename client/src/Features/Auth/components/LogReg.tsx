@@ -32,7 +32,7 @@ function Registration():JSX.Element {
     const registration = (e:React.FormEvent<HTMLFormElement>):void=>{
         e.preventDefault()
         if(password === password2){
-            api.registrationFetch({name,email,password})
+            api.registrationFetch({name,email,password,score:0})
             .then(data=>{
             dispatch({type:'auth/registration',payload:data})
         })

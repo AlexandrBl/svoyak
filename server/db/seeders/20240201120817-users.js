@@ -9,6 +9,7 @@ module.exports = {
       {
         name: 'Admin',
         email: 'Admin',
+        score: 5000,
         password: hash,
         createdAt: new Date(),
         updatedAt: new Date(),
