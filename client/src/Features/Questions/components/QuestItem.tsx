@@ -1,11 +1,34 @@
-import React from 'react'
-import { Quest } from '../type'
+import React, { useState } from 'react'
+import type { Quest } from '../type'
+import '../Questions.css'
 
 function QuestItem({question}:{question:Quest}):JSX.Element {
+  const [modals, setModals] = useState(false)
+  const [disabled, setDisabled] = useState(false)
+
+
+
   return (
-    <div>{
+    <>
+    <button type='button' className={disabled ? 'disabled' : ''} onClick={
+      ()=> setModals(true)
+    } >{
         question.id
-        }</div>
+        }
+    </button>
+{
+  modals && 
+  <div className="background">
+    <div className='modals'>
+    <button type='button' onClick={()=>{
+      setModals(false)
+      setDisabled(true)
+      }} >x</button>
+    <h2>{question.question_text}</h2>
+  </div>
+  </div>
+}
+    </>
   )
 }
 
