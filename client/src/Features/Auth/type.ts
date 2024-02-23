@@ -4,6 +4,8 @@ export type User = {
   password: string
 }
 
+export type UserWithoutName = Omit<User, 'name'>
+
 export type UserAndId = User & {id:number}
 
 export type StateAuth = {

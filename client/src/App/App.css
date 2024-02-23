@@ -43,3 +43,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.disabled{
+ pointer-events: none;
+ background-color:grey;
+}
