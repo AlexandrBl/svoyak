@@ -9,7 +9,24 @@ import { useNavigate } from 'react-router'
 
 function QuestItem({question}:{question:Quest}):JSX.Element {
   const [modals, setModals] = useState(false)
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState('false')
+
+
+  const useLocals = ():void => {
+    setModals(false)
+    setDisabled('true')
+    localStorage.setItem(`${question.question_text}`, 'true')
+  }
+
+  useEffect(()=>{
+    const name = `${question.question_text}`
+
+    if(!localStorage.getItem(name)) {
+      localStorage.setItem(`${question.question_text}`, 'false')
+    }
+    
+    setDisabled(localStorage.getItem(name))    
+  },[])
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -47,9 +64,10 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
 .catch(console.log)
   }
 
+
   return (
     <>
-    <button type='button' className={disabled ? 'disabled' : ''} onClick={
+    <button type='button' className={disabled === 'true' ? 'disabled' : ''} onClick={
       ()=> setModals(true)
     } >{
         question.salary
@@ -59,10 +77,7 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
   modals && 
   <div className="background">
     <div className='modals'>
-    <button type='button' onClick={()=>{
-      setModals(false)
-      setDisabled(true)
-      }} >x</button>
+    <button type='button' onClick={useLocals} >x</button>
     <h2>{question.question_text}</h2>
     <form onSubmit={choiceAnswer}>
       {question.Answers.map((el)=>
