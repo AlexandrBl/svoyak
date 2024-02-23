@@ -78,16 +78,18 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
   <div className="background">
     <div className='modals'>
 
-    <button type='button' onClick={useLocals} >x</button>
-    <h2>{question.question_text}</h2>
+    <button className='buttonModals' type='button' onClick={useLocals} >x</button>
+    <div className="img">
     {question.img_path && <img src={question.img_path} />}
+    </div>
+    <h2 className='title'>{question.question_text}</h2>
     
 
-    <form onSubmit={choiceAnswer}>
+    <form className='formOnSubmit' onSubmit={choiceAnswer}>
       {question.Answers.map((el)=>
-      <>
+      <div>
       <input className='radio' checked  id={el.id} type="radio" name='answer' value={el.id}/>
-      <label className='queRadio' htmlFor={el.id}>{el.answer_text}</label> </>)
+      <label className='queRadio' htmlFor={el.id}>{el.answer_text}</label> </div>)
       }
       <button className={message !== '' ? 'disabled' : ''} type='submit'>Проверить</button>
       <div className='answerErr'>{message}</div>

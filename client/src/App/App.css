@@ -150,29 +150,12 @@ body{
 
 }
 
-.modalsButton {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-}
 
-.queTit {
-  margin: 2rem;
-  font-size: 1.1rem;
-}
-
-.queRadio{
-  margin: 1rem;
-  
-}
 
 .radio:checked {
   accent-color: rgb(47, 47, 47);
 }
 
-form {
-
-}
 
 .container{
   display: flex;
@@ -222,4 +205,57 @@ height: 2rem;
 width: 35%;
 padding-left: 1rem;
 border-radius: 0.3rem;
+}
+
+img {
+  /* width: 20rem; */
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.img{
+  margin: 1rem;
+  overflow: hidden;
+  width: 20rem;
+  border-radius: 1rem;
+}
+
+.buttonModals{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.title{
+  margin: 1rem;
+  text-align: center;
+}
+
+.formOnSubmit{
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ justify-content: center;
+}
+
+
+.radio{
+  margin: 1rem;
+}
+.modalsButton {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.queTit {
+  margin: 2rem;
+  font-size: 1.1rem;
+}
+
+.queRadio{
+  margin: 1rem;
+  
 }
