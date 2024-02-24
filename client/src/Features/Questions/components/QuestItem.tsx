@@ -14,14 +14,15 @@ function QuestItem({question}:{question:Quest}):JSX.Element {
 
   const useLocals = (e:React.MouseEvent<HTMLDivElement, MouseEvent>):void => {
     const mod = document.querySelector('.modals')
+    const back = document.querySelector('.background')
+    
     const child = mod?.children
 
     const childArr = Array.prototype.slice.call( child )
 
-    console.log(child);
     
     childArr.forEach(el=>{
-      if(e.target !== mod && e.target === el){
+      if(e.target !== mod && e.target === el || e.target === back){
         setModals(false)
         setDisabled('true')
         localStorage.setItem(`${question.question_text}`, 'true')
