@@ -12,10 +12,23 @@ function QuestItem({question}:{question:Quest}):JSX.Element {
   const [disabled, setDisabled] = useState('false')
 
 
-  const useLocals = ():void => {
-    setModals(false)
-    setDisabled('true')
-    localStorage.setItem(`${question.question_text}`, 'true')
+  const useLocals = (e:React.MouseEvent<HTMLDivElement, MouseEvent>):void => {
+    const mod = document.querySelector('.modals')
+    const child = mod?.children
+
+    const childArr = Array.prototype.slice.call( child )
+
+    console.log(child);
+    
+    childArr.forEach(el=>{
+      if(e.target !== mod && e.target === el){
+        setModals(false)
+        setDisabled('true')
+        localStorage.setItem(`${question.question_text}`, 'true')
+      }
+    })
+    
+  
   }
 
   useEffect(()=>{
@@ -75,7 +88,7 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
     </button>
 {
   modals && 
-  <div className="background">
+  <div onClick={(event)=>{useLocals(event)}} className="background">
     <div className='modals'>
 
     <button className='buttonModals' type='button' onClick={useLocals} >x</button>
