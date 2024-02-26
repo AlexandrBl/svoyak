@@ -1,8 +1,8 @@
 import type { UserAndId, User, UserWithoutName } from "./type"
 
-  export const registrationFetch = async(obj:User):Promise<{message:string,user:UserAndId}>=>{
+  export const registrationFetch = async(obj:User):Promise<{message:string,user:User}>=>{
 const res = await fetch('/api/auth/reg',{
-method:'POST',
+method:'PUT',
 headers: {
     'Content-Type': 'application/json',
   },
@@ -16,7 +16,7 @@ return data
     const res = await fetch('/api/auth/log',{
     method:'POST',
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Types': 'application/json',
       },
       body:JSON.stringify(obj)
     })

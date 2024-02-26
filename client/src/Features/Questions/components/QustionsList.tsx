@@ -8,7 +8,7 @@ import * as api  from '../api'
 function QustionsList():JSX.Element {
   const dispatch = useDispatch()
   const themes = useSelector((store:RootState)=> store.qustionsState.themes)
-  const user = useSelector((store:RootState)=> store.authState.user)
+  const user = useSelector((store:RootState)=> store.authState.message)
   const navigate = useNavigate()
 
   useEffect(()=> {
@@ -16,7 +16,7 @@ api.initFetchQuestions().then(data=>{
   if(!user){
     navigate('/')
   }
-  dispatch({type:'themes/init',payload:data})
+  dispatch({type:'answer/init',payload:data})
 })
 .catch(console.log)
   },[])
@@ -25,7 +25,7 @@ api.initFetchQuestions().then(data=>{
     <div className='questionList'>
 {
   themes.map((theme)=><div key={theme.id} className='themes'><p className='theme'>{theme.name}</p>
-  <div className='var'>{theme.Questions.map((question)=><QuestItem  question={question} key={question.id}/>)}</div> 
+  <div className='var'>{theme.questions.map((question)=><QuestItem  question={question} key={question.id}/>)}</div> 
 
 </div>)
 }

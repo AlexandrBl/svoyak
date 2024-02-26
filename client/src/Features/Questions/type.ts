@@ -10,7 +10,7 @@ export type Quest = {
     theme_id:number,
     img_path:string;
     salary:number;
-    Answers: Answer[]
+    Answers: Answer
 }
 export type IdQuest = Quest['id']
 
@@ -21,9 +21,9 @@ export type StateQuestions = {
 }
 
 export type Theme = {
-    id:number;
+    id:string;
     name:string;
-    questions:Quest[]
+    questions:IdQuest[]
 }
 
 export type StateThemes = {

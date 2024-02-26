@@ -13,7 +13,7 @@ function Registration():JSX.Element {
     const [logReg, setLogReg] = useState(false)
 
     const dispatch = useDispatch()
-    const message = useSelector((store:RootState)=>store.authState.message)
+    const message = useSelector((store:RootState)=>store.authState)
 
     
 
@@ -23,7 +23,7 @@ function Registration():JSX.Element {
 
     useEffect(()=>{
         if(user){
-            navigate('/themes')
+            navigate('/')
           }
     },[user])
 
@@ -32,7 +32,7 @@ function Registration():JSX.Element {
     const registration = (e:React.FormEvent<HTMLFormElement>):void=>{
         e.preventDefault()
         if(password === password2){
-            api.registrationFetch({name,email,password,score:0})
+            api.registrationFetch({name,email,password,score:'0'})
             .then(data=>{
             dispatch({type:'auth/registration',payload:data})
         })
@@ -43,7 +43,6 @@ function Registration():JSX.Element {
         }
 
         const log = (e:React.FormEvent<HTMLFormElement>):void=>{
-            e.preventDefault()
             api.logFetch({email,password})
             .then(data=>{
             dispatch({type:'auth/registration',payload:data})

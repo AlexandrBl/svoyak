@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 // import '../main.css'
 import { useDispatch, useSelector } from 'react-redux'
 import type { RootState } from '../../../store/store'
@@ -15,7 +15,7 @@ function Header():JSX.Element {
 
     const logOut = ():void => {api.logOut()
     .then(data=>{
-      dispatch({type:'auth/registration', payload: data})
+      dispatch({type:'auth/registratio', payload: data})
       localStorage.clear()
       navigate('/')
     })
@@ -27,10 +27,6 @@ function Header():JSX.Element {
     }, [user])
   return (
     <nav className='nav'>
-        {/* {!user && <NavLink to='/'>Регистрация</NavLink>} */}
-        {/* {user && <NavLink to='/themes'> Игра</NavLink>} */}
-       {/* {!user && <NavLink to='/registration'> Регистрация</NavLink>} */}
-       {/* <NavLink to='/registration'> Регистрация</NavLink> */}
        {user && <p>{`Привет ${user.name}`}!</p>}
        {user && <p>{`твой счет: ${user.score}`}</p>}
        {user && <button onClick={logOut} type='button' className="logOut">Выйти</button>}
