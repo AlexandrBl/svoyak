@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
 import type { Quest } from '../type'
 import '../Questions.css'
 import * as api from '../api'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../../store/store'
 import * as apiApp from '../../../App/api'
-import { useNavigate } from 'react-router'
 
 function QuestItem({question}:{question:Quest}):JSX.Element {
+
+  
   const [modals, setModals] = useState(false)
   const [disabled, setDisabled] = useState('false')
 
@@ -28,8 +29,6 @@ function QuestItem({question}:{question:Quest}):JSX.Element {
         localStorage.setItem(`${question.question_text}`, 'true')
       }
     })
-    
-  
   }
 
   useEffect(()=>{
@@ -38,8 +37,7 @@ function QuestItem({question}:{question:Quest}):JSX.Element {
     if(!localStorage.getItem(name)) {
       localStorage.setItem(`${question.question_text}`, 'false')
     }
-    
-    setDisabled(localStorage.getItem(name))    
+    setDisabled(localStorage.getItem(name)) 
   },[])
 
   const dispatch = useDispatch()
@@ -47,7 +45,7 @@ function QuestItem({question}:{question:Quest}):JSX.Element {
   
   const [message, setMessage] = useState('')
 
-  useEffect(()=>{
+  useEffect(()=>{    
     apiApp.getUser()
     .then(data=>{
      if(data.message === 'ok'){
@@ -58,9 +56,8 @@ function QuestItem({question}:{question:Quest}):JSX.Element {
        }
      } 
     })
-    .catch(console.log)   
+    .catch(console.log)  
    },[message])
-  // const answers = useSelector((store:RootState)=>store.qustionsState.themes.)
 
  const choiceAnswer=(e:React.FormEvent<HTMLFormElement> )=>{
   e.preventDefault()
@@ -94,14 +91,14 @@ api.chekedAnswerFetch({id:question.id, idAnswer:e.target.answer.value}).then((da
 
     <button className='buttonModals' type='button' onClick={useLocals} >x</button>
     <div className="img">
-    {question.img_path && <img src={question.img_path} />}
+    {question.img_path && <img alt='...' src={question.img_path} />}
     </div>
     <h2 className='title'>{question.question_text}</h2>
     
 
     <form className='formOnSubmit' onSubmit={choiceAnswer}>
       {question.Answers.map((el)=>
-      <div>
+      <div key={el.id}>
       <input className='radio' checked  id={el.id} type="radio" name='answer' value={el.id}/>
       <label className='queRadio' htmlFor={el.id}>{el.answer_text}</label> </div>)
       }

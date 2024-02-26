@@ -8,8 +8,10 @@ import Main from '../Features/Main/components/Main';
 import Registration from '../Features/Auth/components/LogReg';
 import * as api from './api'
 import type { RootState } from '../store/store';
+import QuestItem from '../Features/Questions/components/QuestItem';
 
 function App(): JSX.Element {
+  
   
   const dispatch = useDispatch()
 
@@ -28,6 +30,8 @@ useEffect(()=>{
    })
    .catch(console.log)   
   },[])
+
+
 
   return (
     

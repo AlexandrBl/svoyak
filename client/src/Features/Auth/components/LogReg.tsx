@@ -52,7 +52,8 @@ function Registration():JSX.Element {
             }
 
   return (
-    <dev className="container">
+    
+    <div className="container">
         <div className="contBut">
         <div className='contAuth'>
         <button onClick={()=>setLogReg(true)} className={logReg ? 'disabled' : ''} type='button'>reg</button>
@@ -76,7 +77,7 @@ function Registration():JSX.Element {
     </form>}
     <div className='errRega err' >{message}</div>
 </div>
-    </dev>
+    </div>
   )
 }
 
